@@ -1,0 +1,101 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+/* Header and footer stay put; only main scrolls */
+body {
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: system-ui, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1.4;
+	color: #2b3540;
+	background: #e4e8ec;
+}
+
+header, footer {
+	flex: none;
+	padding: 0.75em 1.5em;
+	background: #e4e8ec;
+}
+
+header {
+	border-bottom: 1px solid #c9d0d7;
+	background: #f4f6f8;
+}
+
+footer {
+	font-size: 0.85em;
+	color: #56626e;
+	border-top: 1px solid #c9d0d7;
+	background: #f4f6f8;
+}
+
+h1, h2, h3 {
+	font-weight: 500;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 1.5em;
+}
+
+main {
+	flex: 1;
+	overflow: auto;
+	padding: 1.5em;
+	background: #e4e8ec;
+
+}
+
+/* Grouping: vertical by default, add class="horizontal" for a wrapping row */
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	max-width: 24em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75em;
+}
+
+ul.horizontal {
+	max-width: none;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+ul.horizontal > li {
+	flex: 0 0 14em;
+}
+
+/* Every card the same size: li fills its slot, card fills the li */
+li {
+	display: flex;
+}
+
+project-card {
+	flex: 1;
+	min-height: 8em;
+	background: #fff;
+	--card-border-color: #8a95a1;
+	--card-link-color: #2b4c7e;
+	--card-release-color: #2b4c7e;
+}
+
+/* Card headings live in the shadow DOM; reach them through their parts */
+project-card::part(title),
+project-card::part(release-heading) {
+	font-weight: 300;
+}
+
+/* Page-level override: only cards with class="themed" */
+project-card.themed {
+	--card-border-color: #222448;
+	--card-title-color: #222448;
+	--card-release-color: #222448;
+	--card-link-color: #222448;
+}
